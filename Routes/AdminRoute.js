@@ -13,7 +13,7 @@ router.post("/adminlogin", (req, res) => {
     if (result.length > 0) {
       const username = result[0].username;
       const token = jwt.sign(
-        { role: "admin", username: username },
+        { role: "admin", username: username, id: result[0].id },
         "jwt_secret_key",
         {
           expiresIn: "1d",
@@ -30,4 +30,10 @@ router.post("/adminlogin", (req, res) => {
   });
 });
 
+router.get("/logout", (req, res) => {
+  res.clearCookie("token");
+  return res.json({ Status: true });
+});
+
+router.get("/logout");
 export { router as adminRouter };
