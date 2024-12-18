@@ -35,6 +35,15 @@ function Start() {
             type="button"
             className="btn btn-success"
             onClick={() => {
+              navigate("/technician_login");
+            }}
+          >
+            Technician
+          </button>
+          <button
+            type="button"
+            className="btn btn-success"
+            onClick={() => {
               navigate("/operator_login");
             }}
           >

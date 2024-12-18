@@ -13,10 +13,10 @@ const Login = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
-      .post("http://localhost:3000/operator/operator_login", values)
+      .post("http://localhost:3000/technician/technician_login", values)
       .then((result) => {
         if (result.data.loginStatus) {
-          navigate("/operator_submit");
+          navigate("/technician_submit");
         } else {
           setError(result.data.Error);
         }
@@ -28,7 +28,7 @@ const Login = () => {
     <div className="d-flex justify-content-center align-items-center vh-100 loginPage">
       <div className="p-3 rounded w-25 border loginForm">
         <div className="text-warning">{error && error}</div>
-        <h2>Operator Page</h2>
+        <h2>Technician Login</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <label htmlFor="username">
