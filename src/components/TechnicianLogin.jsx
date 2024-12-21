@@ -16,7 +16,7 @@ const Login = () => {
       .post("http://localhost:3000/technician/technician_login", values)
       .then((result) => {
         if (result.data.loginStatus) {
-          navigate("/technician_submit");
+          navigate("/technician_dashboard");
         } else {
           setError(result.data.Error);
         }
@@ -26,9 +26,8 @@ const Login = () => {
 
   return (
     <div className="d-flex justify-content-center align-items-center vh-100 loginPage">
+      <h2>Technician Login</h2>
       <div className="p-3 rounded w-25 border loginForm">
-        <div className="text-warning">{error && error}</div>
-        <h2>Technician Login</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <label htmlFor="username">

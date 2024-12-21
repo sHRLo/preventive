@@ -28,37 +28,31 @@ function Submit() {
   };
   return (
     <div>
-      <h1 className="text-center text-4xl">Operator Form</h1>
+      <h1 class="text-center display-4">Technician Form</h1>
       <form
-        onSubmit={handleSubmit}
-        className={
-          "bg-white rounded-[15px] shadow-2xl p-3.5 transition-transform duration-0.2 w-[650px] text-center m-auto mt-5"
-        }
+        onsubmit={handleSubmit}
+        class="bg-white rounded shadow-lg p-3 w-75 mx-auto mt-5"
       >
-        <label
-          htmlFor="formcode"
-          className="text-sm block w-full mt-2 mb-1 text-left font-bold"
-        >
-          Form Code*
+        <label for="formcode" class="form-label font-weight-bold">
+          Form Code
         </label>
         <input
-          className="block w-full p-2 box-border rounded-sm text-xs"
+          class="form-control"
           type="text"
           placeholder="Enter Code Number"
           name="formcode"
           onChange={(e) => setValues({ ...values, formcode: e.target.value })}
+          required
         />
 
-        <label
-          htmlFor="section"
-          className="text-sm block w-full mt-2 mb-1 text-left font-bold"
-        >
-          section*
+        <label for="section" class="form-label font-weight-bold">
+          Section
         </label>
         <select
           name="section"
-          className="block w-full mb-4 p-2 box-border rounded"
+          class="form-select mb-4"
           onChange={(e) => setValues({ ...values, section: e.target.value })}
+          required
         >
           <option value="chipper">Chipper</option>
           <option value="conveyorline">Conveyor Line</option>
@@ -73,15 +67,12 @@ function Submit() {
           <option value="general">General</option>
         </select>
 
-        <label
-          htmlFor="machinename"
-          className="text-sm block w-full mt-2 mb-1 text-left font-bold"
-        >
+        <label for="machinename" class="form-label font-weight-bold">
           Machine Name
         </label>
         <input
           type="text"
-          className="block w-full p-2 box-border rounded-sm text-xs"
+          class="form-control"
           name="machinename"
           placeholder="Enter Machine Name"
           onChange={(e) =>
@@ -89,15 +80,12 @@ function Submit() {
           }
         />
 
-        <label
-          htmlFor="equipmentname"
-          className="text-sm block w-full mt-2 mb-1 text-left font-bold"
-        >
+        <label for="equipmentname" class="form-label font-weight-bold">
           Equipment Name
         </label>
         <input
           type="text"
-          className="block w-full p-2 box-border rounded-sm text-xs"
+          class="form-control"
           name="equipmentname"
           placeholder="Enter Equipment Name"
           onChange={(e) =>
@@ -105,14 +93,11 @@ function Submit() {
           }
         />
 
-        <label
-          htmlFor="shift"
-          className="text-sm block w-full mt-2 mb-1 text-left font-bold"
-        >
+        <label for="shift" class="form-label font-weight-bold">
           Shift
         </label>
         <select
-          className="block w-full mb-4 p-2 box-border rounded"
+          class="form-select mb-4"
           name="shift"
           onChange={(e) => setValues({ ...values, shift: e.target.value })}
         >
@@ -121,14 +106,11 @@ function Submit() {
           <option value="c">C</option>
         </select>
 
-        <label
-          htmlFor="operatorname"
-          className="text-sm block w-full mt-2 mb-1 text-left font-bold"
-        >
+        <label for="operatorname" class="form-label font-weight-bold">
           Operator Name
         </label>
         <input
-          className="block w-full p-2 box-border rounded-sm text-xs"
+          class="form-control"
           type="text"
           name="operatorname"
           placeholder="Enter Operator Name"
@@ -137,28 +119,22 @@ function Submit() {
           }
         />
 
-        <label
-          htmlFor="formdate"
-          className="text-sm block w-full mt-2 mb-1 text-left font-bold"
-        >
+        <label for="formdate" class="form-label font-weight-bold">
           Form Date
         </label>
         <input
           type="datetime-local"
-          className="block w-full p-2 box-border rounded-sm text-xs"
+          class="form-control"
           name="formdate"
           onChange={(e) => setValues({ ...values, formdate: e.target.value })}
         />
 
-        <label
-          htmlFor="problemtype"
-          className="text-sm block w-full mt-2 mb-1 text-left font-bold"
-        >
+        <label for="problemtype" class="form-label font-weight-bold">
           Problem Type
         </label>
         <select
           name="problemtype"
-          className="block w-full mb-4 p-2 box-border rounded"
+          class="form-select mb-4"
           onChange={(e) =>
             setValues({ ...values, problemtype: e.target.value })
           }
@@ -170,56 +146,44 @@ function Submit() {
           <option value="metalworking">Metal Working</option>
         </select>
 
-        <label
-          htmlFor="stopstatus"
-          className="text-sm block w-full mt-2 mb-1 text-left font-bold"
-        >
+        <label for="stopstatus" class="form-label font-weight-bold">
           Stop Status
         </label>
         <select
           name="stopstatus"
-          className="block w-full mb-4 p-2 box-border rounded"
+          class="form-select mb-4"
           onChange={(e) => setValues({ ...values, stopstatus: e.target.value })}
         >
           <option value="yes">Yes</option>
           <option value="no">No</option>
         </select>
 
-        <label
-          htmlFor="stopdate"
-          className="text-sm block w-full mt-2 mb-1 text-left font-bold"
-        >
+        <label for="stopdate" class="form-label font-weight-bold">
           Stop Date
         </label>
         <input
           type="datetime-local"
-          className="block w-full p-2 box-border rounded-sm text-xs"
+          class="form-control"
           name="stopdate"
           onChange={(e) => setValues({ ...values, stopdate: e.target.value })}
         />
 
-        <label
-          htmlFor="startdate"
-          className="text-sm block w-full mt-2 mb-1 text-left font-bold"
-        >
+        <label for="startdate" class="form-label font-weight-bold">
           Start Date
         </label>
         <input
           type="datetime-local"
-          className="block w-full p-2 box-border rounded-sm text-xs"
+          class="form-control"
           name="startdate"
           onChange={(e) => setValues({ ...values, startdate: e.target.value })}
         />
 
-        <label
-          htmlFor="problemdescription"
-          className="text-sm block w-full mt-2 mb-1 text-left font-bold"
-        >
+        <label for="problemdescription" class="form-label font-weight-bold">
           Problem Description
         </label>
         <textarea
           name="problemdescription"
-          className={"block w-full mb-4 p-2 box-border rounded-sm text-xs"}
+          class="form-control mb-4"
           cols="50"
           rows="10"
           placeholder="Enter Problem Description"
@@ -227,14 +191,10 @@ function Submit() {
             setValues({ ...values, problemdescription: e.target.value })
           }
         ></textarea>
-        <div className="input-box">
-          <button
-            type={"submit"}
-            className={
-              "submit rounded-md m-4 p-3 text-white cursor-pointer  w-2/5 text-base bg-blue-800"
-            }
-          >
-            submit
+
+        <div class="input-box">
+          <button type="submit" class="btn btn-primary m-4 w-50">
+            Submit
           </button>
         </div>
       </form>
