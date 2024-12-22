@@ -3,6 +3,8 @@ import { GrHostMaintenance, GrStatusCritical } from "react-icons/gr";
 import { CgDanger } from "react-icons/cg";
 import { GoVerified } from "react-icons/go";
 import { BarChart, Bar, Rectangle } from "recharts";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import {
   LineChart,
   Line,
@@ -13,8 +15,23 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
+import "./table.css";
 
 const Home = () => {
+  const [operator, setOperator] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:3000/operator/operator_dashboard")
+      .then((result) => {
+        if (result.data.Status) {
+          setOperator(result.data.Result);
+        } else {
+          alert(result.data.Error);
+        }
+      })
+      .catch((err) => console.log(err));
+  });
   const data = [
     {
       name: "Page A",
@@ -62,9 +79,6 @@ const Home = () => {
 
   return (
     <main className="main-container">
-      <div className="main-title">
-        <h3>DASHBOARD</h3>
-      </div>
       <div className="main-cards">
         <div className="card">
           <div className="card-inner">
@@ -152,6 +166,45 @@ const Home = () => {
             <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
           </LineChart>
         </ResponsiveContainer>
+      </div>
+      <div className="App">
+        <h3 className="text-bg-info">EMFORM</h3>
+        <div className="table-wrapper">
+          <table className="table">
+            <thead>
+              <tr>
+                <th>Form Code</th>
+                <th>Section</th>
+                <th>Machine Name</th>
+                <th>Shift</th>
+                <th>Operator Name</th>
+                <th>Form Date</th>
+                <th>Problem Type</th>
+                <th>Stop Status</th>
+                <th>Stop Date</th>
+                <th>Start Date</th>
+                <th className="expand">Problem Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              {operator.map((c, index) => (
+                <tr key={index}>
+                  <td>{c.formcode}</td>
+                  <td>{c.section}</td>
+                  <td>{c.machinename}</td>
+                  <td>{c.shift}</td>
+                  <td>{c.operatorname}</td>
+                  <td>{c.formdate}</td>
+                  <td>{c.problemtype}</td>
+                  <td>{c.stopstatus}</td>
+                  <td>{c.stopdate}</td>
+                  <td>{c.startdate}</td>
+                  <td>{c.problemdescription}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </main>
   );

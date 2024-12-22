@@ -8,8 +8,9 @@ const Login = () => {
     username: "",
     password: "",
   });
-  const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const [error, setError] = useState(null);
+  axios.defaults.withCredentials = true;
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
@@ -23,11 +24,11 @@ const Login = () => {
       })
       .catch((err) => console.log(err));
   };
-
   return (
     <div className="d-flex justify-content-center align-items-center vh-100 loginPage">
-      <h2>Technician Login</h2>
       <div className="p-3 rounded w-25 border loginForm">
+        <div className="text-warning">{error && error}</div>
+        <h2>technician Page</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <label htmlFor="username">

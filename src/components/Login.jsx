@@ -8,8 +8,9 @@ const Login = () => {
     username: "",
     password: "",
   });
-  const [error, setError] = useState(null);
+  const [error, setError] = useState();
   const navigate = useNavigate();
+  axios.defaults.withCredentials = true;
   const handleSubmit = (event) => {
     event.preventDefault();
     axios

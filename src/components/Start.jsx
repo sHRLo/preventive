@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+
 function Start() {
   const navigate = useNavigate();
   useEffect(() => {
@@ -8,14 +9,19 @@ function Start() {
       .get("http://localhost:3000/verify")
       .then((result) => {
         if (result.data.Status) {
-          if (result.data.role === "admin") {
-            navigate("/dashboard");
-          } else {
-            navigate("/dashboard/submit");
+          if (result.data.role === "technician") {
+            navigate("/technician_dashboard");
           }
+          if (result.data.role === "operator") {
+            navigate("/technician_dashboard");
+          } else {
+            navigate("/dashboard");
+          }
+        } else {
+          navigate("/");
         }
       })
-      .catch((err) => conosle.log(err));
+      .catch((err) => console.log(err));
   }, []);
   return (
     <div className="d-flex justify-content-center align-items-center vh-100 loginPage">

@@ -8,22 +8,22 @@ const Login = () => {
     username: "",
     password: "",
   });
-  const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const [error, setError] = useState(null);
+  axios.defaults.withCredentials = true;
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
       .post("http://localhost:3000/operator/operator_login", values)
       .then((result) => {
         if (result.data.loginStatus) {
-          navigate("/operator_submit");
+          navigate("/operator_dashboard");
         } else {
           setError(result.data.Error);
         }
       })
       .catch((err) => console.log(err));
   };
-
   return (
     <div className="d-flex justify-content-center align-items-center vh-100 loginPage">
       <div className="p-3 rounded w-25 border loginForm">
