@@ -5,21 +5,28 @@ import jwt from "jsonwebtoken";
 const router = express.Router();
 
 router.post("/adminlogin", (req, res) => {
-  const sql = "SELECT * FROM personel WHERE username = ? AND password = ?";
+  const sql = "SELECT * FROM personel WHERE username=? AND password=?";
   con.query(sql, [req.body.username, req.body.password], (err, result) => {
-    if (err) {
-      return res.json({ loginStatus: false, Error: "Query Error" });
-    }
+    if (err)
+      return res.json({
+        loginStatus: false,
+        Error: "Wrong Username or Password",
+      });
     if (result.length > 0) {
       const username = result[0].username;
       const token = jwt.sign(
-        { role: "admin", username: username, id: result[0].id },
+        { role: "admin", username: username },
         "jwt_secret_key",
         {
           expiresIn: "1d",
         }
       );
-      res.cookie("token", token);
+      res.cookie("token", token, {
+        httpOnly: true,
+        secure: true,
+        sameSite: "None",
+      });
+
       return res.json({ loginStatus: true });
     } else {
       return res.json({
@@ -30,10 +37,4 @@ router.post("/adminlogin", (req, res) => {
   });
 });
 
-router.get("/logout", (req, res) => {
-  res.clearCookie("token");
-  return res.json({ Status: true });
-});
-
-router.get("/logout");
 export { router as adminRouter };

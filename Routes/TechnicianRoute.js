@@ -19,7 +19,11 @@ router.post("/technician_login", (req, res) => {
           expiresIn: "1d",
         }
       );
-      res.cookie("token", token);
+      res.cookie("token", token, {
+        httpOnly: true,
+        secure: true,
+        sameSite: "None",
+      });
       return res.json({ loginStatus: true });
     } else {
       return res.json({
