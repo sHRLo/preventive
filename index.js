@@ -6,6 +6,7 @@ import jwt, { decode } from "jsonwebtoken";
 import cookieParser from "cookie-parser";
 
 const app = express();
+
 app.use(cookieParser());
 app.use(
   cors({
@@ -36,6 +37,6 @@ app.get("/verify", verifyUser, (req, res) => {
   return res.json({ Status: true, role: req.role, id: req.id });
 });
 
-app.listen(() => {
+app.listen(3306, () => {
   console.log("Server is Running...");
 });
