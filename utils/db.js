@@ -5,7 +5,7 @@ const con = mysql.createConnection({
   user: "Reza",
   password: "Re@123456",
   database: "PM",
-  port: 1443
+  // connectTimeout: 10 // Increase Timeout to 10 seconds
 });
 
 con.connect(function (err) {
