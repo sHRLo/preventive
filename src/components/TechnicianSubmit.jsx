@@ -20,17 +20,10 @@ const Submit = () => {
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      const response = await axios.post(
-        "http://localhost:3306/auth/submit",
-        values
-      );
-      navigate("/dashboard");
-    } catch (err) {
-      alert(Result.data.Error);
-    }
+    axios.post("http://localhost:3306/auth/submit", values);
+    navigate("/dashboard");
   };
 
   return (

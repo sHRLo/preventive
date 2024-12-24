@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { GrHostMaintenance, GrStatusCritical } from "react-icons/gr";
 import { CgDanger } from "react-icons/cg";
 import { GoVerified } from "react-icons/go";
-import { BarChart, Bar, Rectangle } from "recharts";
-import { useState, useEffect } from "react";
-import axios from "axios";
 import {
+  BarChart,
+  Bar,
+  Rectangle,
   LineChart,
   Line,
   XAxis,
@@ -15,10 +15,10 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-
+import axios from "axios";
 import "./table.css";
 
-const Home = () => {
+function Home() {
   const [operator, setOperator] = useState([]);
 
   axios.defaults.withCredentials = true;
@@ -175,6 +175,6 @@ const Home = () => {
       </div>
     </main>
   );
-};
+}
 
 export default Home;
