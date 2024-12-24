@@ -4,9 +4,10 @@ import axios from "axios";
 
 function Start() {
   const navigate = useNavigate();
+  axios.defaults.withCredentials = true;
   useEffect(() => {
     axios
-      .get("http://localhost:3000/verify")
+      .get("http://127.0.0.1:5173/auth/adminlogin")
       .then((result) => {
         if (result.data.Status) {
           if (result.data.role === "technician") {

@@ -40,7 +40,6 @@ const Home = () => {
       pv: 2400,
       amt: 2400,
     },
-
   ];
 
   return (
@@ -51,12 +50,13 @@ const Home = () => {
             <h3>EM</h3>
             <CgDanger className="card_icon" />
           </div>
-          <h1>{
-            operator.map((c,index) => (
-             <h1 key={index}>
-              <h1>{c.formcode}</h1>
-             </h1>
-            ))}</h1>
+          <h1>
+            {operator.map((c, index) => (
+              <h1 key={index}>
+                <h1>{c.formcode}</h1>
+              </h1>
+            ))}
+          </h1>
         </div>
         <div className="card">
           <div className="card-inner">

@@ -1,21 +1,27 @@
-import mysql from "mysql2";
+import con from 'mssql';
 
-const con = mysql.createConnection({
-  host: "10.0.1.7",
-  user: "Reza",
-  password: "Re@123456",
-  database: "PM",
-  connectTimeout: 10000
+const config = {
+  server: '10.0.1.7', // Replace with your server name
+  database: 'PM', // Replace with your database name
+  user: 'Reza', // Replace with your username
+  password: 'Re@123456', // Replace with your password
+  driver: 'ODBC Driver 17 for SQL Server',
+  options: {
+    enableArithAbort: true,
+    trustServerCertificate: true,
+  },
+};
 
-});
+con.connect(config)
+  .then(pool => {
+    return pool.request()
+      .query('SELECT * FROM dbo.personel'); // Replace with your query
+  })
+  .then(result => {
+    console.log(result);
+  })
+  .catch(err => {
+    console.error('Error connecting to the database:', err);
+  });
 
-con.connect(function (err) {
-  if (err) {
-    console.log("Connection Error", err);
-    return;
-  } else {
-    console.log("Connected Successfully");
-  }
-});
-
-export default con;
+export default { sql };

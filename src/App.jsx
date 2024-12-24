@@ -1,10 +1,9 @@
 import "./App.css";
-import { useEffect, useState } from "react";
 import Dashboard from "./components/Dashboard.jsx";
 import Home from "./components/Home.jsx";
 import Login from "./components/Login.jsx";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Start from "./components/Start.jsx";
 import OperatorLogin from "./components/OperatorLogin.jsx";
 import OperatorSubmit from "./components/OperatorSubmit.jsx";
