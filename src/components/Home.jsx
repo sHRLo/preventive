@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import React from "react";
 import { GrHostMaintenance, GrStatusCritical } from "react-icons/gr";
 import { CgDanger } from "react-icons/cg";
 import { GoVerified } from "react-icons/go";
@@ -21,9 +21,10 @@ import "./table.css";
 const Home = () => {
   const [operator, setOperator] = useState([]);
 
+  axios.defaults.withCredentials = true;
   useEffect(() => {
     axios
-      .get("http://localhost:3000/operator/operator_dashboard")
+      .get("http://localhost:3306/operator/operator_submit")
       .then((result) => {
         if (result.data.Status) {
           setOperator(result.data.Result);
@@ -32,7 +33,8 @@ const Home = () => {
         }
       })
       .catch((err) => console.log(err));
-  });
+  }, []);
+
   const data = [
     {
       name: "Page A",
@@ -50,13 +52,7 @@ const Home = () => {
             <h3>EM</h3>
             <CgDanger className="card_icon" />
           </div>
-          <h1>
-            {operator.map((c, index) => (
-              <h1 key={index}>
-                <h1>{c.formcode}</h1>
-              </h1>
-            ))}
-          </h1>
+          <h1>255</h1>
         </div>
         <div className="card">
           <div className="card-inner">

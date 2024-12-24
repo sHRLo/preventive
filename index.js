@@ -2,18 +2,21 @@ import express from "express";
 import cors from "cors";
 import { adminRouter } from "./Routes/AdminRoute.js";
 import { OperatorRouter } from "./Routes/OperatorRoute.js";
-import jwt, { decode } from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 import cookieParser from "cookie-parser";
 
 const app = express();
-app.use(cookieParser());
+
 app.use(
   cors({
     origin: ["http://localhost:5173"],
     methods: ["GET", "POST", "PUT"],
     credentials: true,
+    optionsSuccessStatus: 200,
   })
 );
+
+app.use(cookieParser());
 app.use(express.json());
 app.use("/operator", OperatorRouter);
 app.use("/auth", adminRouter);
@@ -37,6 +40,5 @@ app.get("/verify", verifyUser, (req, res) => {
 });
 
 app.listen(3306, () => {
-  console.log("Server is Running...");
+  console.log("Server Running...");
 });
-

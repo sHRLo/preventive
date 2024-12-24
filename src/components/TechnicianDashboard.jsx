@@ -6,7 +6,7 @@ function Dashboard() {
   const navigate = useNavigate();
   const handleLogout = () => {
     axios
-      .get("http://localhost:3000/auth/logout")
+      .get("http://localhost:3306/auth/logout")
       .then((result) => {
         if (result.data.Status) {
           navigate("/start");

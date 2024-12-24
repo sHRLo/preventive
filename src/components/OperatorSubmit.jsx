@@ -22,7 +22,7 @@ const Submit = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:3000/operator/operator_submit", values)
+      .post("http://localhost:3306/operator/operator_submit", values)
       .then((result) => {
         if (result.data.Status) {
           navigate("/operator_dashboard");
@@ -195,7 +195,7 @@ const Submit = () => {
                   ></textarea>
                 </div>
               </div>
-              <button className="nextBtn">
+              <button type="submit" className="nextBtn">
                 Next
                 <MdOutlineNavigateNext className="next-icon" />
               </button>

@@ -24,7 +24,7 @@ const Submit = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:3000/auth/submit",
+        "http://localhost:3306/auth/submit",
         values
       );
       navigate("/dashboard");

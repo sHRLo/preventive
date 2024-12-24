@@ -14,7 +14,7 @@ const Login = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
-      .post("http://localhost:3000/operator/operator_login", values)
+      .post("http://localhost:3306/operator/operator_login", values)
       .then((result) => {
         if (result.data.loginStatus) {
           navigate("/operator_dashboard");

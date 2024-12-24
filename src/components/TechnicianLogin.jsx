@@ -14,7 +14,7 @@ const Login = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
-      .post("http://localhost:3000/technician/technician_login", values)
+      .post("http://localhost:3306/technician/technician_login", values)
       .then((result) => {
         if (result.data.loginStatus) {
           navigate("/technician_dashboard");

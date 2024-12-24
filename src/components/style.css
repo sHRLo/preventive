@@ -10,8 +10,10 @@
   color: white;
 }
 
-ul li :hover {
+ul li:hover {
   background-color: gray;
+  border-radius: 5px;
+  width: 100%;
 }
 
 .employee_image {
