@@ -196,8 +196,8 @@ const Submit = () => {
                 </div>
               </div>
               <button className="nextBtn">
-                <span className="btnText">Next </span>
-                <MdOutlineNavigateNext />
+                Next
+                <MdOutlineNavigateNext className="next-icon" />
               </button>
             </div>
           </div>
